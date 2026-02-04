@@ -11980,6 +11980,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -11994,6 +12000,7 @@ footer.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin-top: 0;
 }
 
 p {
@@ -12009,4 +12016,14 @@ p {
 
 .text-justify {
   text-align: justify;
+}
+
+html, body {
+  background-color: #f8f9fa; /* bg-light */
+}
+
+main {
+  flex: 1;
+  background-color: #f8f9fa; /* bg-light */
+  min-height: calc(100vh - 120px); /* hauteur header + footer */
 }/*# sourceMappingURL=main.css.map */
