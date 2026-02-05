@@ -12026,4 +12026,18 @@ main {
   flex: 1;
   background-color: #f8f9fa; /* bg-light */
   min-height: calc(100vh - 120px); /* hauteur header + footer */
+}
+
+/* Assurez-vous que ce fichier est chargé après Bootstrap */
+.rect {
+  width: 100%;
+  padding-top: 30.25%; /* ratio 16:9 */
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: #f8f9fa; /* important: transparent */
+  display: block;
+}
+
+/* si vous voulez une bordure discrète au lieu d'ombre */
+.rect-card {
+  border: primary 1px solid;
 }/*# sourceMappingURL=main.css.map */
