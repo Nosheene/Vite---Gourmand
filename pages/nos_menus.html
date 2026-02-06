@@ -3,95 +3,121 @@
             <h2 class="text-center">Nos menus</h2>
                  </div>
 
-<!-- BARRE DE FILTRES (repliable + réinitialisable) -->
-  <div class="container">
-    <div class="filters-wrapper my-3" aria-live="polite">
-      <div class="filters-header d-flex align-items-center justify-content-between">
-        <div class="d-flex align-items-center gap-3">
-          <div class="filters-label">Filtres</div>
-          <button id="toggle-filters" class="btn btn-sm btn-outline-primary" aria-expanded="true" aria-controls="filters-content">
-            Masquer
-          </button>
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <button id="reset-filters" class="btn btn-sm btn-outline-primary">Réinitialiser les filtres</button>
-        </div>
-      </div>
+<!-- FILTRES MOCKUP (remplace ton bloc filtres existant) -->
+<section class="py-5 bg-light">
+  <div class="container bg-light">
+   
 
-      <!-- zone repliable -->
-      <div id="filters-content" class="filters-content">
-        <div class="filters-row">
-          <!-- Catégories (multi-toggle) -->
-          <div class="btn-group filter-group" role="group" aria-label="Catégories">
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="noel">Noël</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="paques">Pâques</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="vege">Végé</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="vegan">Vegan</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="classique">Classique</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="evenement">Événement</button>
-            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="halal">Halal</button>
-          </div>
-
-          <!-- Tailles (multi-toggle) -->
-          <div class="btn-group filter-group ms-3" role="group" aria-label="Tailles">
-            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="4">4 pers</button>
-            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="8">8 pers</button>
-            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="12">12 pers</button>
-            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="20">20 pers</button>
-          </div>
-
-          <!-- Prix : min / max (single per group) -->
-          <div class="btn-group filter-group ms-3" role="group" aria-label="Prix">
-            <button type="button" class="btn filter-btn" data-filter-type="price-min" data-filter-value="100">Prix min : 100 €</button>
-            <button type="button" class="btn filter-btn" data-filter-type="price-max" data-filter-value="500">Prix max : 500 €</button>
-          </div>
-        </div>
-
-        <div class="filters-help mt-2">Sélectionnez plusieurs boutons pour affiner (OR dans un groupe, AND entre groupes).</div>
-      </div>
+    <div class="filters-wrapper p-4 border rounded-3 shadow-sm bg-light mb-5 collapsible-filters">
+  <div class="d-flex justify-content-between align-items-center mb-4 filter-header">
+    <h6 class="mb-0 fw-bold text-dark">Filtres</h6>
+    <div class="btn-group">
+      <button id="toggle-filters" class="btn btn-sm btn-outline-secondary rounded-pill px-3 me-1">
+        <i class="bi bi-chevron-up"></i> Masquer
+      </button>
+      <button id="reset-filters" class="btn btn-sm btn-outline-danger rounded-pill px-3">Réinitialiser</button>
     </div>
   </div>
 
-  <!-- CARTES (structure inchangée) -->
-  <section>
-    <div class="container py-4 bg-light">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-        <div class="col" data-category="noel classique" data-price="200" data-size="4">
-          <div class="card rect-card h-100 text-primary bg-light">
-            <div class="rect"></div>
-            <div class="card-body">
-              <h5 class="rect-title">Menu de Noël</h5>
-              <p class="rect-desc">Foie gras, chapon aux marrons, bûche festive. Réveillon gourmand. Prix : 200 € 4 pers. min</p>
-              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
-            </div>
+      <div class="filters-content row g-4">
+        <!-- THÈMES (ligne 1) -->
+        <div class="col-lg-5">
+          <label class="form-label fw-medium text-muted mb-3">Thème</label>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="filter-btn btn px-4 py-2 rounded-pill fw-medium" data-filter="category" data-value="noel">Noël</button>
+            <button class="filter-btn btn px-4 py-2 rounded-pill fw-medium" data-filter="category" data-value="paques">Pâques</button>
+            <button class="filter-btn btn px-4 py-2 rounded-pill fw-medium" data-filter="category" data-value="vege">Végé</button>
+            <button class="filter-btn btn px-4 py-2 rounded-pill fw-medium" data-filter="category" data-value="vegan">Vegan</button>
+            <button class="filter-btn btn px-4 py-2 rounded-pill fw-medium" data-filter="category" data-value="classique">Classique</button>
           </div>
         </div>
 
-        <div class="col" data-category="paques classique" data-price="180" data-size="12">
-          <div class="card rect-card h-100 text-primary bg-light">
-            <div class="rect"></div>
-            <div class="card-body">
-              <h5 class="rect-title">Menu de Pâques</h5>
-              <p class="rect-desc">Agneau confit, asperges. Prix : 180 € 12 pers. min</p>
-              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
+        <!-- PRIX + PERSONNES (ligne 2) -->
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <!-- Prix Min -->
+            <div class="col-md-4">
+              <label class="form-label fw-medium text-muted mb-3">Prix min</label>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="price-min" data-value="100">100€</button>
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="price-min" data-value="150">150€</button>
+              </div>
             </div>
-          </div>
-        </div>
+            
+            <!-- Personnes -->
+            <div class="col-md-4">
+              <label class="form-label fw-medium text-muted mb-3">Pers.</label>
+              <div class="d-flex flex-column gap-2">
+              <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="size" data-value="4">4 pers</button>
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="size" data-value="8">8 pers</button>
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="size" data-value="12">12 pers</button>
+              </div>
+            </div>
 
-        <div class="col" data-category="evenement halal" data-price="320" data-size="20">
-          <div class="card rect-card h-100 text-primary bg-light">
-            <div class="rect"></div>
-            <div class="card-body">
-              <h5 class="rect-title">Menu Mariage</h5>
-              <p class="rect-desc">Huîtres, filet en croûte. Prix : 320 € 20 pers. min</p>
-              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
+            <!-- Prix Max -->
+            <div class="col-md-4">
+              <label class="form-label fw-medium text-muted mb-3">Prix max</label>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="price-max" data-value="500">500€</button>
+                <button class="filter-btn btn px-3 py-2 rounded-pill fw-medium" data-filter="price-max" data-value="300">300€</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Inclure LE script externe UNE SEULE FOIS ici -->
-  <script src="assets/js/menu-filter.js"></script>
-</body>
+   <div class="menu-grid-container mb-5">
+  <div class="row g-4 justify-content-center">
+        <!-- TA CARTE NOËL ICI -->
+      <div class="col-lg-4 col-md-6 menu-card" data-category="noel" data-price="200" data-size="12">
+  <div class="card rect border-0 shadow-sm overflow-hidden">
+    <!-- RECTANGLE FOND UNIFORME SANS PHOTO -->
+    <div class="rect-content bg-light">
+      <h5 class="rect-title">Menu de Noël</h5>
+      <p class="rect-desc">Foie gras, chapon rôti, bûche maison</p>
+      <div class="rect-footer">
+        <span class="badge bg-primary rounded-pill px-3 py-1 fw-medium">12 pers</span>
+        <span class="fw-bold text-primary fs-5 ms-2">200€</span>
+      </div>
+      <button class="btn btn-primary w-100 mt-3 rounded-3 px-4 py-2 fw-medium rect-button">Voir le détail</button>
+    </div>
+  </div>
+</div>
+        <!-- TA CARTE PÂQUES ICI -->
+    <div class="col-lg-4 col-md-6 menu-card" data-category="paques" data-price="180" data-size="8">
+  <div class="card rect border-0 shadow-sm overflow-hidden">
+    <div class="rect-content bg-light">
+      <h5 class="rect-title">Menu de Pâques</h5>
+      <p class="rect-desc">Agneau confit, asperges, œufs mimosa</p>
+      <div class="rect-footer">
+        <span class="badge bg-primary rounded-pill px-3 py-1 fw-medium">8 pers</span>
+        <span class="fw-bold text-primary fs-5 ms-2">180€</span>
+      </div>
+      <button class="btn btn-primary w-100 mt-3 rounded-3 px-4 py-2 fw-medium rect-button">Voir le détail</button>
+    </div>
+  </div>
+</div>
+
+        <!-- TA CARTE MARIAGE ICI -->
+  <div class="col-lg-4 col-md-6 menu-card" data-category="classique" data-price="250" data-size="20">
+  <div class="card rect border-0 shadow-sm overflow-hidden">
+    <div class="rect-content bg-light">
+      <h5 class="rect-title">Menu Mariage</h5>
+      <p class="rect-desc">Menu mariage place debout</p>
+      <div class="rect-footer">
+        <span class="badge bg-primary rounded-pill px-3 py-1 fw-medium">20 pers</span>
+        <span class="fw-bold text-primary fs-5 ms-2">250€</span>
+      </div>
+      <button class="btn btn-primary w-100 mt-3 rounded-3 px-4 py-2 fw-medium rect-button text-white">Voir le détail</button>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À LA FIN DE TON BODY (avant </body>) -->
+<script src="assets/js/menu-filter.js"></script>
+

@@ -43,132 +43,238 @@ main {
   background-color: #f8f9fa; /* bg-light */
   min-height: calc(100vh - 120px); /* hauteur header + footer */
 }
-/* Couleurs / accents */
+/* ===== FILTRES MOCKUP - AJOUTE À LA FIN ===== */
 :root {
-  --accent: #7C232F; /* bordeaux */
+  --bordeaux: #7C232F;
+  --bs-primary: #7C232F;
 }
 
-/* wrapper des filtres */
-.filters-wrapper {
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  padding: 12px;
-  background: rgba(255,255,255,0.02);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  transition: box-shadow .18s ease;
-}
-
-/* en mode replié on minimise l'espace (animation via max-height) */
-.filters-wrapper .filters-content {
-  overflow: hidden;
-  transition: max-height .28s ease, padding .18s ease;
-  max-height: 1000px; /* grand valeur pour état ouvert */
-}
-
-/* état replié */
-.filters-wrapper.collapsed .filters-content {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/* header */
-.filters-header { padding: 0 4px; }
-.filters-label { font-weight: 600; color: var(--accent); }
-
-/* boutons filtres */
 .filter-btn {
-  border-radius: 8px;
-  padding: 8px 12px;
-  border: 1.5px solid var(--bs-primary);
-  color: var(--bs-primary);
-  background: transparent;
-  box-shadow: none;
-  transition: background-color .12s, transform .08s, color .12s;
-  font-weight: 600;
+  border: 2px solid var(--bordeaux) !important;
+  color: var(--bordeaux) !important;
+  background: transparent !important;
+  border-radius: 50px !important;
+  padding: 10px 24px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1) !important;
+  height: auto !important;
 }
 
-/* hover */
-.filter-btn:hover { transform: translateY(-2px); }
+.filter-btn:hover:not(.active) {
+  background: rgba(124,35,47,0.08) !important;
+  border-color: #913844 !important;
+  transform: translateY(-1px);
+}
 
-/* actif */
 .filter-btn.active {
-  background: var(--bs-primary);
-  color: #7C232F;
-  box-shadow: 0 8px 20px rgba(122,31,43,0.18);
-  border-color: var(--bs-primary);
+  background: var(--bordeaux) !important;
+  color: white !important;
+  border-color: var(--bordeaux) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124,35,47,0.3) !important;
 }
 
-/* reset */
-#reset-filters { border-radius: 8px; }
+#reset-filters {
+  border-radius: 50px !important;
+}
 
-/* aide */
-.filters-help { font-size: 0.9rem; color: rgba(0,0,0,0.6); padding-left: 4px; }
-/* Assurez-vous que ce fichier est chargé après Bootstrap */
+.filters-wrapper {
+  border-color: #dee2e6 !important;
+  border-radius: 12px !important;
+}
 
+/* Cartes hover */
+.menu-card .card {
+  transition: all 0.3s ease;
+}
+
+.menu-card .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+/* ===== RECTANGLES SANS PHOTOS - HORIZONTAL ===== */
 .rect {
-  position: relative;
-  width: 100%;
-  padding-top: 0;        /* retirer ratio si présent */
-  min-height: 240px;     /* ajustez la hauteur */
+  height: 280px !important;  /* Hauteur uniforme */
+  border-radius: 16px !important;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border: 1px solid #dee2e6 !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+  transition: all 0.3s ease !important;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* titre haut, bouton bas, description au milieu */
-  padding: 1rem;         /* espace interne pour ne pas coller aux bords */
-  background: transparent;
-  border-radius: 0.5rem;
-  overflow: hidden;
 }
 
-/* si vous voulez une bordure discrète au lieu d'ombre */
-.rect-card {
-  border: #7C232F 1px solid;
+.rect-content {
+  padding: 2rem 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
 }
 
-/* Titre en haut du rectangle */
+/* TITRE BORDEAUX EN HAUT */
 .rect-title {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.75rem;
-  right: 0.75rem;
-  margin: 0;
-  font-size: 24px;
-  font-weight: 600;
-  color: $primary; /* couleur titre (ex: bootstrap primary) — adaptez si besoin */
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-/* Bouton aligné au centre horizontalement, placé sous la description */
-.rect-button {
-  align-self: center; /* centre horizontalement */
-  margin-top: 0.6rem;
-  margin-bottom: 0; 
-}
-
-/* Description centrée verticalement et horizontalement */
-.rect-desc {   
- position: absolute;
-  top: 50%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0 0.5rem;
-  text-align: left;
-  color: $primary; /* couleur du texte — adaptez si besoin */
-  font-size: 0.95rem;
+  color: #7C232F !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  margin: 0 0 1rem 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
   line-height: 1.2;
 }
 
-/* Responsive : réduire la taille du titre sur petits écrans si nécessaire */
+/* DESCRIPTION BORDEAUX */
+.rect-desc {
+  color: #7C232F !important;
+  font-size: 15px !important;
+  margin: 0 0 1.5rem 0 !important;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* FOOTER */
+.rect-footer {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+}
+
+/* BOUTON RECTANGULAIRE */
+.rect-button {
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  padding: 12px 24px !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+/* HOVER */
+.menu-card:hover .rect {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 20px 40px rgba(124,35,47,0.15) !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .rect { height: 260px !important; }
+  .rect-title { font-size: 20px !important; }
+  .col-lg-4 { margin-bottom: 1.5rem !important; }
+}
+/* FIX GRILLE HORIZONTALE */
+#menu-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+#menu-grid > [class*="col-"] {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+  margin-bottom: 0 !important;  /* SUPPRIME espacement vertical */
+}
+
+.col-lg-4 {
+  flex: 0 0 33.333333% !important;
+  max-width: 33.333333% !important;
+  padding-bottom: 0 !important;  /* ZÉRO vertical */
+}
+
+/* Hauteur uniforme TOUTES cartes */
+.rect {
+  height: 280px !important;
+  margin-bottom: 0 !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .col-lg-4 { flex: 0 0 50% !important; max-width: 50% !important; }
+}
 @media (max-width: 576px) {
-  .rect-title {
-    font-family: poppins, sans-serif !important;
-    font-size: 0.95rem;
+  .col-lg-4 { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+/* FIX GRILLE CENTRÉE */
+#menu-grid {
+  justify-content: space-between !important;
+  align-items: stretch !important;  /* Même hauteur */
+}
+
+#menu-grid > .col-lg-4 {
+  margin-bottom: 2rem !important;  /* Espacement vertical léger */
+}
+
+/* OU SI tu préfères grille parfaitement centrée */
+#menu-grid {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 2rem !important;
+}
+
+#menu-grid > .col-lg-4 {
+  flex: 0 1 calc(33.333% - 1.33rem) !important;  /* 3 colonnes égales centrées */
+  max-width: calc(33.333% - 1.33rem) !important;
+}
+.menu-grid-container .row {
+  justify-content: center !important;
+  --bs-gutter-x: 2.5rem;  /* Espacement parfait */
+}
+
+.col-lg-4 {
+  flex: 0 0 33.333% !important;
+  max-width: 33.333% !important;
+}
+/* ===== FILTRES RÉTRACTABLES ===== */
+.collapsible-filters {
+  .filters-content {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    max-height: 1200px; /* Ouvert */
   }
-  .rect-desc {
-    font-size: 0.9rem;
+
+  &.collapsed .filters-content {
+    max-height: 0 !important;
+    padding: 0 !important;
   }
+
+  #toggle-filters {
+    &:hover { 
+      i { transform: rotate(180deg); }
+    }
+  }
+}
+
+/* Icône rotation */
+#toggle-filters.collapsed i {
+  transform: rotate(180deg);
+}
+/* FIX URGENT GRILLE */
+#menu-grid {
+  justify-content: center !important;
+  gap: 2rem !important;
+}
+
+.menu-grid-container {
+  --bs-gutter-x: 0 !important;  /* Supprime espacement Bootstrap */
+}
+.filter-btn, #toggle-filters, #reset-filters {
+  pointer-events: auto !important;
+  z-index: 1000 !important;
+}
+
+/* FIX URGENT CLICS */
+.filter-btn, #toggle-filters, #reset-filters {
+  pointer-events: auto !important;
+  z-index: 1000 !important;
+}
+
+/* COULEURS BORDEAUX */
+.bg-bordeaux { background: #7C232F !important; }
+.text-bordeaux { color: #7C232F !important; }
+.btn-bordeaux { 
+  background: #7C232F !important; 
+  color: white !important; 
 }
