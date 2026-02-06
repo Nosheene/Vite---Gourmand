@@ -43,16 +43,132 @@ main {
   background-color: #f8f9fa; /* bg-light */
   min-height: calc(100vh - 120px); /* hauteur header + footer */
 }
+/* Couleurs / accents */
+:root {
+  --accent: #7C232F; /* bordeaux */
+}
+
+/* wrapper des filtres */
+.filters-wrapper {
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow .18s ease;
+}
+
+/* en mode replié on minimise l'espace (animation via max-height) */
+.filters-wrapper .filters-content {
+  overflow: hidden;
+  transition: max-height .28s ease, padding .18s ease;
+  max-height: 1000px; /* grand valeur pour état ouvert */
+}
+
+/* état replié */
+.filters-wrapper.collapsed .filters-content {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* header */
+.filters-header { padding: 0 4px; }
+.filters-label { font-weight: 600; color: var(--accent); }
+
+/* boutons filtres */
+.filter-btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--bs-primary);
+  color: var(--bs-primary);
+  background: transparent;
+  box-shadow: none;
+  transition: background-color .12s, transform .08s, color .12s;
+  font-weight: 600;
+}
+
+/* hover */
+.filter-btn:hover { transform: translateY(-2px); }
+
+/* actif */
+.filter-btn.active {
+  background: var(--bs-primary);
+  color: #7C232F;
+  box-shadow: 0 8px 20px rgba(122,31,43,0.18);
+  border-color: var(--bs-primary);
+}
+
+/* reset */
+#reset-filters { border-radius: 8px; }
+
+/* aide */
+.filters-help { font-size: 0.9rem; color: rgba(0,0,0,0.6); padding-left: 4px; }
 /* Assurez-vous que ce fichier est chargé après Bootstrap */
+
 .rect {
+  position: relative;
   width: 100%;
-  padding-top: 30.25%; /* ratio 16:9 */
-  border-radius: 0.5rem 0.5rem 0 0;
-  background-color: #f8f9fa; /* important: transparent */
-  display: block;
+  padding-top: 0;        /* retirer ratio si présent */
+  min-height: 240px;     /* ajustez la hauteur */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* titre haut, bouton bas, description au milieu */
+  padding: 1rem;         /* espace interne pour ne pas coller aux bords */
+  background: transparent;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 /* si vous voulez une bordure discrète au lieu d'ombre */
 .rect-card {
-  border: primary 1px solid;
+  border: #7C232F 1px solid;
+}
+
+/* Titre en haut du rectangle */
+.rect-title {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: $primary; /* couleur titre (ex: bootstrap primary) — adaptez si besoin */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* Bouton aligné au centre horizontalement, placé sous la description */
+.rect-button {
+  align-self: center; /* centre horizontalement */
+  margin-top: 0.6rem;
+  margin-bottom: 0; 
+}
+
+/* Description centrée verticalement et horizontalement */
+.rect-desc {   
+ position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0 0.5rem;
+  text-align: left;
+  color: $primary; /* couleur du texte — adaptez si besoin */
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+/* Responsive : réduire la taille du titre sur petits écrans si nécessaire */
+@media (max-width: 576px) {
+  .rect-title {
+    font-family: poppins, sans-serif !important;
+    font-size: 0.95rem;
+  }
+  .rect-desc {
+    font-size: 0.9rem;
+  }
 }

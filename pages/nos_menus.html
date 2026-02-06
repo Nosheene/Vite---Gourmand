@@ -1,41 +1,97 @@
-        <div class="container pt-4">
+<body>
+<div class="container pt-4">
             <h2 class="text-center">Nos menus</h2>
                  </div>
 
-
-<section>
-<body>
-  <div class="container py-4 bg-light" style="background:#f0f8ff;"> <!-- exemple de fond de site -->
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-      <div class="col">
-        <div class="card rect-card h-100 text-primary bg-light">
-          <div class="rect" aria-hidden="true"></div>
-          <div class="card-body style="bac">
-            <h5 class="card-title">Menu 1</h5>
-            <p class="card-text">Description du menu 1.</p>
-          </div>
+<!-- BARRE DE FILTRES (repliable + réinitialisable) -->
+  <div class="container">
+    <div class="filters-wrapper my-3" aria-live="polite">
+      <div class="filters-header d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+          <div class="filters-label">Filtres</div>
+          <button id="toggle-filters" class="btn btn-sm btn-outline-primary" aria-expanded="true" aria-controls="filters-content">
+            Masquer
+          </button>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button id="reset-filters" class="btn btn-sm btn-outline-primary">Réinitialiser les filtres</button>
         </div>
       </div>
 
-      <div class="col">
-        <div class="card rect-card h-100 text-primary bg-light">
-          <div class="rect" aria-hidden="true"></div>
-          <div class="card-body bg-light">
-            <h5 class="card-title">Menu 2</h5>
-            <p class="card-text">Description du menu 2.</p>
+      <!-- zone repliable -->
+      <div id="filters-content" class="filters-content">
+        <div class="filters-row">
+          <!-- Catégories (multi-toggle) -->
+          <div class="btn-group filter-group" role="group" aria-label="Catégories">
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="noel">Noël</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="paques">Pâques</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="vege">Végé</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="vegan">Vegan</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="classique">Classique</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="evenement">Événement</button>
+            <button type="button" class="btn filter-btn" data-filter-type="category" data-filter-value="halal">Halal</button>
+          </div>
+
+          <!-- Tailles (multi-toggle) -->
+          <div class="btn-group filter-group ms-3" role="group" aria-label="Tailles">
+            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="4">4 pers</button>
+            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="8">8 pers</button>
+            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="12">12 pers</button>
+            <button type="button" class="btn filter-btn" data-filter-type="size" data-filter-value="20">20 pers</button>
+          </div>
+
+          <!-- Prix : min / max (single per group) -->
+          <div class="btn-group filter-group ms-3" role="group" aria-label="Prix">
+            <button type="button" class="btn filter-btn" data-filter-type="price-min" data-filter-value="100">Prix min : 100 €</button>
+            <button type="button" class="btn filter-btn" data-filter-type="price-max" data-filter-value="500">Prix max : 500 €</button>
           </div>
         </div>
-      </div>
 
-      <div class="col">
-        <div class="card rect-card h-100 text-primary bg-light">
-          <div class="rect"></div>
-          <div class="card-body bg-light">
-            <h5 class="card-title">Menu 3</h5>
-            <p class="card-text">Description du menu 3.</p>
+        <div class="filters-help mt-2">Sélectionnez plusieurs boutons pour affiner (OR dans un groupe, AND entre groupes).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARTES (structure inchangée) -->
+  <section>
+    <div class="container py-4 bg-light">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <div class="col" data-category="noel classique" data-price="200" data-size="4">
+          <div class="card rect-card h-100 text-primary bg-light">
+            <div class="rect"></div>
+            <div class="card-body">
+              <h5 class="rect-title">Menu de Noël</h5>
+              <p class="rect-desc">Foie gras, chapon aux marrons, bûche festive. Réveillon gourmand. Prix : 200 € 4 pers. min</p>
+              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-category="paques classique" data-price="180" data-size="12">
+          <div class="card rect-card h-100 text-primary bg-light">
+            <div class="rect"></div>
+            <div class="card-body">
+              <h5 class="rect-title">Menu de Pâques</h5>
+              <p class="rect-desc">Agneau confit, asperges. Prix : 180 € 12 pers. min</p>
+              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" data-category="evenement halal" data-price="320" data-size="20">
+          <div class="card rect-card h-100 text-primary bg-light">
+            <div class="rect"></div>
+            <div class="card-body">
+              <h5 class="rect-title">Menu Mariage</h5>
+              <p class="rect-desc">Huîtres, filet en croûte. Prix : 320 € 20 pers. min</p>
+              <a href="#" class="btn btn-primary btn-sm rect-button">Voir le menu</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Inclure LE script externe UNE SEULE FOIS ici -->
+  <script src="assets/js/menu-filter.js"></script>
+</body>
