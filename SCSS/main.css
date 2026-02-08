@@ -12282,8 +12282,7 @@ main {
 }
 
 .allreservations a {
-  color: #7C232F !important;
-  font-weight: 600 !important;
-  text-decoration: none !important;
-  transition: color 0.3s ease !important;
+  display: block;
+  color: #1D1C1C !important;
+  padding: 10px;
 }/*# sourceMappingURL=main.css.map */
