@@ -1,4 +1,5 @@
 const tokenCookieName = "accesstoken";
+const btn-setCoo
 
 function setToken(token){
     setCookie(tokenCookieName, token, 7);
