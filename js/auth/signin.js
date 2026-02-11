@@ -15,11 +15,17 @@ inputValidationPassword.addEventListener("keyup", validateForm);
 
 //Function permettant de valider tout le formulaire
 function validateForm(){
+    const nomO
     validateRequired(inputNom);
     validateRequired(inputPreNom);
     validateMail(inputMail);
 
-    if(o)
+    if(ok){
+        btnValidation.disabled = false;
+    }
+    else{
+        btnValidation.disabled = true;
+    }
 }
 
 function validateMail(input){
