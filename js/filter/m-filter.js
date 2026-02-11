@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+(function() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.menu-card');
   const resetBtn = document.getElementById('reset-filters');
@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const filtersWrapper = document.querySelector('.collapsible-filters');
   const filtersContent = document.querySelector('.filters-content');
 
-  // état des filtres actifs
   const active = {
     category: null,
     'price-min': null,
@@ -22,22 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
       let visible = true;
 
-      // thème
       if (active.category && cardCategory !== active.category) {
         visible = false;
       }
 
-      // prix min
       if (active['price-min'] && cardPrice < Number(active['price-min'])) {
         visible = false;
       }
 
-      // prix max
       if (active['price-max'] && cardPrice > Number(active['price-max'])) {
         visible = false;
       }
 
-      // personnes
       if (active.size && cardSize !== Number(active.size)) {
         visible = false;
       }
@@ -46,20 +41,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // clic sur un bouton de filtre
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const type = btn.dataset.filter;
       const value = btn.dataset.value;
 
-      // désactiver autres boutons du même type
       filterButtons.forEach(b => {
         if (b.dataset.filter === type) {
           b.classList.remove('active');
         }
       });
 
-      // toggle : si déjà actif on désactive
       if (active[type] === value) {
         active[type] = null;
       } else {
@@ -71,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // bouton Réinitialiser
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       Object.keys(active).forEach(k => (active[k] = null));
@@ -80,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // bouton Masquer / Afficher les filtres
   if (toggleBtn && filtersWrapper && filtersContent) {
     toggleBtn.addEventListener('click', () => {
       const collapsed = filtersWrapper.classList.toggle('collapsed');
@@ -101,6 +91,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // affichage initial
   applyFilters();
-});
+})();
