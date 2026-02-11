@@ -1,56 +1,23 @@
-//Implémenter le JS de ma page
+const mailInput = document.getElementById("EmailInput");
+const passwordInput = document.getElementById("PasswordInput");
+const btnSingin = document.getElementById("btnSignin");
 
-const inputNom = document.getElementById("NomInput");
-const inputPreNom = document.getElementById("PrenomInput");
-const inputMail = document.getElementById("EmailInput");
-const inputPassword = document.getElementById("PasswordInput");
-const inputValidationPassword = document.getElementById("ValidatePasswordInput");
-const btnValidation = document.getElementById("btn-validation-inscription");
+btnSingin.addEventListener("click", checkCredentials);
 
-inputNom.addEventListener("keyup", validateForm); 
-inputPreNom.addEventListener("keyup", validateForm);
-inputMail.addEventListener("keyup", validateForm);
-inputPassword.addEventListener("keyup", validateForm);
-inputValidationPassword.addEventListener("keyup", validateForm);
+function checkCredentials(){
+    //Ici, il faudra appeler l'API pour vérifier les credentials en BDD
+    
+    if(mailInput.value == "test@mail.com" && passwordInput.value == "123"){
+        //Il faudra récupérer le vrai token
+        const token = "lkjsdngfljsqdnglkjsdbglkjqskjgkfjgbqslkfdgbskldfgdfgsdgf";
+        setToken(token);
+        //placer ce token en cookie
 
-//Function permettant de valider tout le formulaire
-function validateForm(){
-    const nomO
-    validateRequired(inputNom);
-    validateRequired(inputPreNom);
-    validateMail(inputMail);
-
-    if(ok){
-        btnValidation.disabled = false;
+        setCookie(RoleCookieName, "admin", 7);
+        window.location.replace("/");
     }
     else{
-        btnValidation.disabled = true;
-    }
-}
-
-function validateMail(input){
-    //Définir mon regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mailUser = input.value;
-    if(mailUser.match(emailRegex)){
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid"); 
-        return true;
-    }
-    else{
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
-        return false;
-    }
-}
-
-function validateRequired(input){
-    if(input.value != ''){
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid"); 
-    }
-    else{
-        input.classList.remove("is-valid");
-        input.classList.add("is-invalid");
+        mailInput.classList.add("is-invalid");
+        passwordInput.classList.add("is-invalid");
     }
 }
